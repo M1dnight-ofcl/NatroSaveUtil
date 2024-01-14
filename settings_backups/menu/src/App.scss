@@ -1,0 +1,52 @@
+:root{
+    @import url('https://fonts.cdnfonts.com/css/tt-wellingtons-trl');
+    --bg1: #171717;
+    --bg2: #242424;
+    --bg3: #313131;
+    --txt1: #fafafa;
+    --txt2: #d9d9d9;
+    --accent: #d04949;
+    --gtrans: .35s;
+    body{background:var(--bg2);}
+    *{font-family: 'TT Wellingtons Trl', sans-serif;font-weight:200;}
+    *::selection{background:var(--accent);color:var(--txt1);}
+}
+#sidebar {
+    #info {
+        font-size: .65rem;
+        color: var(--txt2);
+        position: absolute;
+        bottom: 2.5px;
+        left: 2.5px;
+    }
+    #cont{
+        height: 100%;width: 100%;
+        position: absolute;
+        top: 0;left: 0; 
+        backdrop-filter: blur(1vmin);
+        z-index: 99;
+        span{
+            display: block;
+            background: #313131AF;
+            padding: 2vmin;
+            cursor: pointer;
+            color: var(--txt2);
+            transition:var(--gtrans),border-left .1s;
+            font-weight: 200;
+            &:hover{background: var(--accent);}
+            user-select: none;
+        }
+        .active{border-left:5px solid var(--accent);&:hover{border-color:#fff;}}
+    }
+    z-index: 95;
+    height: 100dvh;
+    width: 20dvw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: var(--bg3) 1px solid;
+    background-image: 
+        linear-gradient(180deg, rgba(23,23,23,0.45) 0%, rgba(23,23,23,0.95) 100%),
+        url('../../public/bg.png');
+    background-size: cover;
+}
