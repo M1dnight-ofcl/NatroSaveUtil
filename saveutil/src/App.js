@@ -7,11 +7,11 @@ import { eel } from "./eel.js";
 const App = (prop) => {
   eel.set_host("ws://localhost:8888");
   // eel.hello(); // test
-
-  const [status,setStatus]=useState('Home');
+  const[advStatus,setAdvStatus]=useState('idle');
+  const[status,setStatus]=useState('Home');
   useEffect(()=>{document.title=`NatroSaveUtil - ${status}`;});
   useEffect(()=>{document.getElementById('sb-home').click()},[]);
-
+  //sidebar option
   const SideBarIcon = (prop) => {
     const onClick = (e) => {
       e.preventDefault();
@@ -34,7 +34,13 @@ const App = (prop) => {
   const Home=()=>{
     const Backup=(e)=>{
       e.preventDefault();
+      setAdvStatus('backup in progress...');
+      setStatus('Backing Up...');
       eel.saveSettings();
+      setStatus('Home');
+      setAdvStatus('Done!');
+      setTimeout(()=>{},3000);
+      setAdvStatus('idle');
     }
     return (
       <div id="home" className="content">
@@ -54,6 +60,10 @@ const App = (prop) => {
           </div>
           <div id="content">
             <Home/>
+
+            <div id="statusbar">
+              <span id="status">{advStatus}</span>
+            </div>
           </div>
         </div>
     </div>

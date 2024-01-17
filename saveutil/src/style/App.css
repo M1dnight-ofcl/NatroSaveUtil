@@ -3,8 +3,10 @@
   --bg1: #171717;
   --bg2: #242424;
   --bg3: #313131;
+  --bg4: #1d1d1d;
   --txt1: #fafafa;
   --txt2: #c6c6c6;
+  --txt3: #a1a1a1;
   --accent: #d04949;
   --gtrans: .35s;
   --gbrad: 1.5vmin;
@@ -70,6 +72,22 @@ button:active:after {
   background: transparent;
   background-size: cover;
   padding: 5vmin;
+}
+#content #statusbar {
+  width: 100%;
+  height: 25px;
+  background: var(--bg4);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3.5px;
+}
+#content #statusbar #status {
+  font-family: "Courier New", Courier, monospace !important;
+  color: var(--txt3);
 }
 
 #sidebar {
