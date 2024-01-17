@@ -1,7 +1,7 @@
+@title saveutil
 @echo off
+/saveutil/nircmd.exe win hide ititle "saveutil"
 echo Opening...
-cd settings_backups
-cd menu
-start "CMD" yarn start
-:: start "Logs" py -m /settings_backup/script
+cd saveutil
+powershell -windowstyle hidden -command yarn start
 goto :eof
