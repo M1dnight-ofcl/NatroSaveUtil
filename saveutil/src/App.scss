@@ -1,19 +1,27 @@
 :root{
+    @import url('https://fonts.cdnfonts.com/css/red-hat-mono');
     @import url('https://fonts.cdnfonts.com/css/tt-wellingtons-trl');
     --bg1: #171717;
     --bg2: #242424;
     --bg3: #313131;
     --bg4: #1d1d1d;
+    --bg5: #3c3c3c;
+    --bg6: #2a2a2a;
     --txt1: #fafafa;
     --txt2: #c6c6c6;
     --txt3: #a1a1a1;
     --accent: #d04949;
     --gtrans: .35s;
     --gbrad: 1.5vmin;
+    --ff-default: 'TT Wellingtons Trl', sans-serif;
+    --ff-monospace: 'Red Hat Mono', sans-serif !important;
     body{background:var(--bg2);}
-    *{font-family: 'TT Wellingtons Trl', sans-serif;font-weight:200;color:var(--txt2);h1{color:var(--txt1);}}
+    *{font-family: var(--ff-default);font-weight:200;color:var(--txt2);h1{color:var(--txt1);}}
     *::selection{background:var(--accent);color:var(--txt1);}
 }
+
+#cH_t{padding-bottom: 5vmin;}
+
 button{
     padding: 1.75vmin 7.5vmin;
     outline: none;
@@ -21,9 +29,10 @@ button{
     background: var(--bg3);
     border-radius: var(--gbrad);
     font-size: 2vmin;
+    border: var(--bg5) 1px solid;
     cursor: pointer;
     transition:var(--gtrans);
-    &:hover {background: var(--accent); transform: scale(105%);}
+    &:hover {background: var(--accent);transform: scale(105%);border: var(--accent) 1px solid;}
     &:after {
         content: "";
         display: block;
@@ -50,29 +59,78 @@ button{
     width: 80dvw;
     position: fixed;
     top: 0;
-    right: 0;
-    border-right: var(--bg3) 1px solid;
+    right:0;
+    // border-right: var(--bg3) 1px solid;
     background:transparent;
     background-size:cover;
     padding: 5vmin;
+    transition:var(--gtrans);
     #statusbar{
-        width: 100%;
+        width: 80dvw;
         height: 25px;
         background: var(--bg4);
-        position: absolute;
+        position: fixed;
         bottom: 0;
-        left: 0;
+        right: 0;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         padding: 3.5px;
+        border-top: var(--bg3) 1px solid;
         #status {
-            font-family: 'Courier New', Courier, monospace !important;
+            font-family: var(--ff-monospace);
             color: var(--txt3);
         }
     }
 }
-#sidebar {
+#savelist{
+    height: 75vmin;
+    width: 100%;
+    background:var(--bg4);
+    border: var(--bg3) 1px solid;
+    border-radius:var(--gbrad);
+    overflow:auto;
+    .item{
+        width: 100%;
+        height: 5vmin;
+        background:var(--bg1);
+        *{font-family: var(--ff-monospace);}
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        .name{
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1.5vmin;
+        }
+        .iconlist{
+            position:absolute;
+            right:0;
+            top:0;
+            height:100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row-reverse;
+            padding: 1.5vmin;
+            width: auto;
+            .icon{
+                transition:var(--gtrans);
+                &:hover{transform:scale(110%);}
+                margin:.75vmin;
+            }
+        }
+    }
+}
+#CVab_t{padding-bottom: 3.5vmin;}
+#sidebar{
     #info {
         font-size: .65rem;
         color: var(--txt2);
@@ -88,6 +146,7 @@ button{
         z-index: 99;
         span{
             display: block;
+            font-size: 2.25vmin;
             background: #313131AF;
             padding: 2vmin;
             cursor: pointer;
@@ -97,7 +156,7 @@ button{
             &:hover{background: var(--accent);}
             user-select: none;
         }
-        .active{border-left:5px solid var(--accent);&:hover{border-color:#fff;}}
+        .active{border-left:1vmin solid var(--accent);&:hover{border-color:#fff;}}
     }
     z-index: 95;
     height: 100dvh;
@@ -110,4 +169,37 @@ button{
         linear-gradient(180deg, rgba(23,23,23,0.45) 0%, rgba(23,23,23,0.95) 100%),
         url('../../public/bg.png');
     background-size: cover;
+}
+.c_alert{
+    position:fixed;
+    left:50%;
+    top:50%;
+    opacity:1;
+    width: 70vmin;
+    transform:translate(-50%,-50%);
+    background: var(--bg6);
+    border: var(--bg5) 1px solid;
+    padding: 5vmin;
+    padding-bottom: 12vmin;
+    border-radius:var(--gbrad);
+    transition:var(--gtrans);
+    z-index:9999;
+    h1{padding-bottom:1vmin;}
+    .buttonWrapper {
+        position: absolute;
+        bottom: 2.5vmin;
+        right: 2.5vmin;
+    }
+}
+.hovertip {
+    position:fixed;
+    display:none;//d:block
+    top:50%;
+    left:50%;
+    z-index: 9999;
+    background:var(--bg2);
+    border:var(--bg3) 1px solid;
+    border-radius:var(--gbrad);
+    padding:1.5vmin;
+    // transition-timing-function:ease-in-out;
 }
